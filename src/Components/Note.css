@@ -1,0 +1,42 @@
+.Align-text{
+    align-self: center;
+    margin-left: 15%;
+    margin-right: 20%;
+    margin-top: 5%;
+    width:70%;
+  }
+  
+  .Space{
+    padding-top: 20px;
+  }
+
+
+  .center{
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    /* width: 100%; */
+  }
+
+  
+  .left{
+    left:0;
+    width:50%;
+    background-color: black;
+}
+
+.right{
+  right:0;
+  width:50%;
+}
+
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+
+}
