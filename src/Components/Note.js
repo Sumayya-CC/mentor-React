@@ -12,10 +12,10 @@ import {browserHistory} from 'react-router';
 //Adding js styles
 const useStyles = makeStyles((theme) => ({
         textField: {
-            marginLeft: theme.spacing.unit,
             marginRight: theme.spacing.unit,
             // width: 350,
             paddingTop: "1%",
+            // paddingLeft:'1%',
             marginTop: "1%",
             marginLeft:'0%',
             color: "black",
@@ -58,6 +58,7 @@ function Note(props) {
     const handleChange1 = (event) => {
         setRecipient(event.target.value);
         console.log(recipient);
+        console.log(props.emailId)
       };
 
     const handleChange2 = (event) => {
@@ -69,14 +70,14 @@ function Note(props) {
     //     setSender(props.name);
     //     console.log(sender);
     //   };
-    console.log(props.emailId)
+    
 
       const handleSubmit = (event) => {
         event.preventDefault();
         console.log(note);
         console.log(sender);
         axios.post(API.INSERT_WISH,JSON.stringify({
-                  "emailID":"cc@tarento.com",
+                  "emailID":props.emailId,
                   "sender":props.name,
                   "recipient":recipient,
                   "note":note,
@@ -104,12 +105,10 @@ function Note(props) {
       />
 
           <TextField 
-            id="Mentor"
-            label=" Name of your mentor"
-            name="Mentor"
-            required
+            id="Caption"
+            label="Write your caption"
+            name="Caption"
             onChange={handleChange1}
-            InputLabelProps={{required: false}}
             // value={this.state.text}
             
             // variant="outlined"
@@ -119,7 +118,7 @@ function Note(props) {
 
             <TextField style = {{height: '150px',}}
             id="Message"
-            label=" What's your message for mentor?"
+            label=" Write your message"
             name="Text"
             required
             align='justify'

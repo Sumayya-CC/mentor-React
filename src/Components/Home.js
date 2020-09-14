@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import './Style.css';
-import logo from '../Image/tarentologo.png'
 import ImageGridList from './Image';
 import Note from './Note';
 
@@ -20,7 +19,7 @@ export default function Home (props){
       
         <div className="split1 right1"> 
         
-        <div> <Note image={image} emailId={props.params.emailId} name={props.params.name}/></div>
+        <div> <Note image={image} emailId='jinesh.sumedhan@tarento.com' name={props.params.name}/></div>
        </div>  
     </div>  
         )

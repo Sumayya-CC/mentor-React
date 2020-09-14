@@ -14,6 +14,7 @@ import imageh from '../Image/imageh.jpg';
 import { Typography } from '@material-ui/core';
 // import "fontsource-roboto";
 import mail from '../Image/mail.png';
+import Upload from './Upload';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop:"3%",
     backgroundColor: theme.palette.background.paper,
   },
-  gridList:{
   
-width:"100%",
+  gridList:{
+    width:"100%",
   },
   gridListTile: {
     marginLeft:"1%",
@@ -75,12 +76,12 @@ width:"100%",
 export default function ImageGridList(props) {
 
   const classes = useStyles();
-  const tileData = [{img:image}, {img:imagea},{img:imageb}, {img:imagec},{img:imaged}, {img:imagee},{img:imagef}, {img:imageg},{img:imageh},
+  const tileData = [{img:image}, {img:imagea},{img:imageb}, {img:imagec},{img:imaged}, {img:imagee},{img:imagef}, {img:imageg},
      ];
 
 
      const onImageClick = (tile) => {
-        console.log(tile.title);
+        console.log(tile);
         props.onPassImage(tile);
     };
 
@@ -91,8 +92,8 @@ export default function ImageGridList(props) {
     <div className={classes.header}>
 
            <img src={mail} className={classes.icon}/>
-           <span style={{display:"inline-block",marginLeft:"1%",font: " Bold 18px Roboto "}}> Thank your mentor on this 'Teacher's day'</span> </div>
-      <Typography variant='body1' className={classes.title}> Choose a photo card, write your message. Share!</Typography>
+           <span style={{display:"inline-block",marginLeft:"1%",font: " Bold 18px Roboto "}}> Share your memories with your colleagues</span> </div>
+      <Typography variant='body1' className={classes.title}> Choose a photo or upload your photo, write your message. Post!</Typography>
     <div className={classes.root}>
       <GridList cellHeight={150}className={classes.gridList} cols={4}>
         {tileData.map((tile) => (
@@ -100,6 +101,9 @@ export default function ImageGridList(props) {
             <img src={tile.img} onClick={() =>onImageClick(tile)}  />
           </GridListTile>
         ))}
+        <GridListTile  className={classes.gridListTile} cols={1}>
+          <Upload/>
+        </GridListTile>
       </GridList>
     </div>
     </div>

@@ -18,20 +18,24 @@ import img from '../Image/image.jpg';
 import axios from 'axios';
 import * as API from '../constants/Api';
 import  { useRef, useState } from 'react';
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from "react-component-export-image";
+import {browserHistory} from 'react-router';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: '70%',
-      marginLeft:'15.5%',
-      marginTop:'5%',
-      height:"75%"
+    width: '50%',
+    marginLeft:'25%',
+    marginTop:'1%',
+    height:"80%",
     },
-    button:{   align: 'center', 
+    button:{  
+      //  align: 'center', 
     backgroundColor: "#004040", color:"#FFFFFF", 
     width:'25%', height: '20%', 
     textTransform: 'none',
     marginTop:'0.5%',
-    marginBottom:'0.5%'
+    marginBottom:'0.5%',
+    marginLeft:'2%'
      },
      textField: {
       width: '60%',
@@ -51,12 +55,11 @@ const useStyles = makeStyles({
 function Share(props) {
   
   const [copySuccess, setCopySuccess] = useState('');
-  const textAreaRef = useRef(null);
   const [recipient, setRecipient] = React.useState('');
   const [note, setNote] = React.useState('');
   const [sender, setSender] = React.useState('');
   const[imageId,setImageId]=useState();  
-  const[copy, setCopy] = useState('');
+  const cardIm = useRef();
 
   // const  copyToClipboard = (event) =>{
   //   setCopy("http://localhost:3000/Tarento/Mentor-Wish/".concat('',props.params.shareId));
@@ -95,31 +98,38 @@ function Share(props) {
   };
   fetchData();});
 
+  const deletePost = () => {
+    console.log('deleting'+ props.params.shareId);
+    axios.delete(API.DELETE_POST,{params:{shareId: props.params.shareId}});
+    browserHistory.push("/Home/" + 'jinesh.sumedhan' + "/" + 'Jinesh%20Sumedhan')
+
+  }
+
   const classes = useStyles();
   return (
-      // style:className=" split1 center1"
-      <div className = 'split1 center1'>
+    <div className = 'split1 center1'>
       
-      <div className = "Space1"> <img  src={logo} alt="cur" className="center"/></div> 
-    <Card className={classes.root} >
-     <CardActionArea>
-       
-        <img src={imageId} style={{width:"100%"}}/>
-      
-       <CardContent>
-         <Typography gutterBottom variant="h6" style={{font: " Bold 22px  Roboto"}} >
-         Thank you {recipient} !
-         </Typography>
-         <Typography variant="body" color="textSecondary" component="p" align="justify" style={{font: " 18px  Roboto"}}>
-         {note}
-         </Typography>
-         <Typography variant="h6" style={{float:"right", paddingTop: "5%", font: " Italic 20px Roboto " }}>
-           - {sender}
-         </Typography>
-       </CardContent>
-     </CardActionArea>
-   </Card> 
-    <style dangerouslySetInnerHTML={{__html: `
+    {/* <div className = "Space"> <img  src={logo} alt="cur" className="center"/></div>  */}
+  <Card className={classes.root} ref={cardIm}>
+   <CardActionArea>
+     
+      <img src={imageId} style={{width:"100%"}}/>
+    
+     <CardContent>
+     <img  src={logo} alt="tarento" style={{marginTop:'1%',marginBottom:'4%', width:'40%'}}/>
+       <Typography gutterBottom variant="h6" style={{font: " Bold 20px  Roboto"}} >
+       Thank you {recipient}!
+       </Typography>
+       <Typography variant="body" color="textSecondary" component="p" align="justify" style={{font: " 16px  Roboto", paddingTop:'4%'}}>
+       {note}
+       </Typography>
+       <Typography variant="h6" style={{float:"right", paddingTop: "4%", font: " Italic 18px Roboto " }}>
+         - {sender}
+       </Typography>
+     </CardContent>
+   </CardActionArea>
+ </Card> 
+    {/* <style dangerouslySetInnerHTML={{__html: `
       html, body {
         margin: 0;
         padding: 0;
@@ -134,9 +144,8 @@ function Share(props) {
         margin-top: 40px;
         width: 50%;
       }
-    `}} />
-<div>
-      <div style={{paddingTop:'1%'}}></div>
+    `}} /> */}
+
       {/* <form > */}
           
         {/* <textarea
@@ -153,21 +162,25 @@ function Share(props) {
             className={classes.textField}
             fullWidth = "true"/> */}
       {/* </form> */}
-      {
-       /* Logical shortcut for only displaying the 
+      
+       {/* Logical shortcut for only displaying the 
           button if the copy command exists */
+          
       //  document.queryCommandSupported('copy') &&
         // <div>
         //   <button onClick={copyToClipboard}  variant="contained" 
         //       className ={classes.button}>COPY</button> 
         //   {copySuccess}
         // </div>
-        <div>
-          <Button onClick={() =>  navigator.clipboard.writeText('Copy this text to clipboard')} className={classes.button}>Copy</Button> 
-          {copySuccess}
+       }
+        <div style={{marginLeft:'11%', paddingTop:'1.5%'}}>
+        <Button className={classes.button} onClick={deletePost}>Cancel</Button>
+          <Button className={classes.button} onClick={() => exportComponentAsJPEG(cardIm)}>Download</Button>
+          <Button onClick={() =>  navigator.clipboard.writeText('http://localhost:3004/Tarento/Mentor-Wish/'+props.params.shareId)} className={classes.button}>Copy</Button> 
+          {/* {copySuccess} */}
         </div>
-      }
-    </div>
+      
+
     <div style={{paddingTop:'1.5%'}}></div>
     <InlineShareButtons
       config={{
@@ -184,10 +197,10 @@ function Share(props) {
           'twitter'
           
         ],
-        padding: 12,          // padding within buttons (INTEGER)
+        padding: 10,          // padding within buttons (INTEGER)
         radius: 4,            // the corner radius on each button (INTEGER)
         show_total: false,
-        size: 40,             // the size of each button (INTEGER)
+        size: 30,             // the size of each button (INTEGER)
 
         // OPTIONAL PARAMETERS
         url: 'https://www.tarento.com', // (defaults to current url)

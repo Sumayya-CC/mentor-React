@@ -7,6 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
+import mail from '../Image/mail.png';
 
 
 
@@ -64,70 +65,70 @@ handleSubmit = event => {
   event.preventDefault();
   var uname = this.state.username;
   var pass =  this.state.password;
-  var flag=0;
-        this.setState((prevState, props) => {
-          return { showError1: false,showError2:false }
-        })
-  console.log(uname);
-  console.log(pass);
-  //console.log(errormsg)
-  if (!/\S+\.\S+@tarento.com+/.test(uname)) {
-        flag=1;
-         console.log("Emailerror");
-           errormsg2='Invalid Credentials!!!';
-           this.setState(() => {
-             flag=1;
-               return { showError2: true }
-             })
-         }
-         else {
+  // var flag=0;
+  //       this.setState((prevState, props) => {
+  //         return { showError1: false,showError2:false }
+  //       })
+  // console.log(uname);
+  // console.log(pass);
+  // //console.log(errormsg)
+  // if (!/\S+\.\S+@tarento.com+/.test(uname)) {
+  //       flag=1;
+  //        console.log("Emailerror");
+  //          errormsg2='Invalid Credentials!!!';
+  //          this.setState(() => {
+  //            flag=1;
+  //              return { showError2: true }
+  //            })
+  //        }
+  //        else {
 
-          if(flag===0){
-            var uri = 'http://kronos-test.idc.tarento.com/api/v1/user/getUserInfo';
+  //         if(flag===0){
+  //           var uri = 'http://kronos-test.idc.tarento.com/api/v1/user/getUserInfo';
            
-            axios.post(uri,JSON.stringify({ "email": this.state.username}) , { headers: {  "Content-Type": "application/json"  }            
-          })
-          .then(response => (response.data))
-            .then((data)=>{
-            this.setState({User:data})
-            console.log(this.state.User);
-            console.log(this.state.User.responseData.email);
-            var email=this.state.User.responseData.email
-            var fname=this.state.User.responseData.first_name
-            var lname=this.state.User.responseData.last_name
-            var  name = fname + ' ' + lname
-            if(this.state.User.statusCode===200)
-        {
-          this.setState(() => {
-            return { showError3: false }
-          })
-          browserHistory.push("/Home/" + email + "/" + name)
+  //           axios.post(uri,JSON.stringify({ "email": this.state.username}) , { headers: {  "Content-Type": "application/json"  }            
+  //         })
+  //         .then(response => (response.data))
+  //           .then((data)=>{
+  //           this.setState({User:data})
+  //           console.log(this.state.User);
+  //           console.log(this.state.User.responseData.email);
+  //           var email=this.state.User.responseData.email
+  //           var fname=this.state.User.responseData.first_name
+  //           var lname=this.state.User.responseData.last_name
+  //           var  name = fname + ' ' + lname
+  //           if(this.state.User.statusCode===200)
+  //       {
+  //         this.setState(() => {
+  //           return { showError3: false }
+  //         })
+          browserHistory.push("/Home/" + 'jinesh.sumedhan' + "/" + 'Jinesh%20Sumedhan')
      }
 
 
-    else{
-      errormsg3="Invalid Credentials!!!";
-      this.setState(() => {
-          return { showError3: true }
-        })
+  //   else{
+  //     errormsg3="Invalid Credentials!!!";
+  //     this.setState(() => {
+  //         return { showError3: true }
+  //       })
 
-     }        
-        })
+  //    }        
+  //       })
     
-          .catch(error => {
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-           errormsg3='Registration Failed '  + error ;
-           this.setState((prevState, props) => {
+  //         .catch(error => {
+  //           console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  //          errormsg3='Registration Failed '  + error ;
+  //          this.setState((prevState, props) => {
            
-            return { showError3: true }
+  //           return { showError3: true }
 
-              })
+  //             })
               
-             }); 
-     }
-      }
+  //            }); 
+  //    }
+  //     }
       
-  }
+  // }
   
    
 
@@ -136,7 +137,9 @@ handleSubmit = event => {
         return (
             <div>
             <div className="split left">
-            <img className="img3" src={Logo} alt="Welcome Message"/>
+            <div style={{font: " Bold 18px Roboto ",}} className="img3">
+            <img  src={mail} alt="Welcome Message" style={{width: '8%', paddingRight:'2%'}}/>
+             Share your memories with your colleagues</div>
             <img className='img2' src={Tarento} alt="Tarento"/>
             </div>
             <div className="split right">
