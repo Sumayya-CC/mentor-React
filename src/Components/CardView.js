@@ -4,20 +4,19 @@ import '../App.css';
 import './Style.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import * as API from '../constants/Api';
 import {browserHistory} from 'react-router';
 import Button from '@material-ui/core/Button';
+import tarentologo from '../Image/tarentologo.png';
+import './Style.css';
 
 const useStyles = makeStyles({
   root: {
     width: '50%',
     marginLeft:'25%',
     marginTop:'1%',
-    height:"85%"
+    height:"50%"
    
   },
   button:{  
@@ -33,7 +32,7 @@ const useStyles = makeStyles({
 );
 
   
-function Publicshare(props) {
+function Cardview(props) {
   
   const [caption, setCaption] = React.useState('');
   const [note, setNote] = React.useState('');
@@ -72,36 +71,36 @@ function Publicshare(props) {
   return (
     <div>
       <Button onClick={allPost} className={classes.button} style={{marginTop:'3%', marginLeft:'3%', float:'left'}}>Back</Button> 
-      <div className = 'split1 center1'>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <img src={imageId} style={{width:"100%"}} alt="No content!"/>
-            <CardContent>
-              <img  src={logo} alt="tarento" style={{marginTop:'1%',marginBottom:'4%', width:'40%'}}/>
-              <Typography gutterBottom variant="h6" style={{font: " Bold 20px  Roboto"}} >
-                {caption}
-              </Typography>
-              <Typography variant="body" color="textSecondary" component="p" align="justify" style={{font: " 16px  Roboto", paddingTop:'4%'}}>
-                {note}
-              </Typography>
-              <Typography variant="h6" style={{float:"right", paddingTop: "4%", font: " Italic 18px Roboto " }}>
-                - {sender}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card> 
+      <div className = 'split1 center2'>
+        <Card  style={{marginTop:"8%", marginBottom:"1%",marginRight:'1%', minHeight:'500px', minWidth:'500px'}} className={classes.root}>
+            <img src={tarentologo} width="20%"  style={{marginLeft:'5%', marginTop:'4%'}}/>  
+            <div>
+                <div class="card-container">
+                    <div style={{marginLeft:'4%',}}>
+                        <img src={imageId} width="300" minHeight="300" style={{marginTop:'5%'}} />
+                        <h2 style={{color:"#004040",marginTop:'2%', float:'left', textAlign:'center', fontFamily:'Roboto'}}>
+                            {caption}</h2>
+                    </div>
+                    <div style={{textAlign:'justify',paddingLeft:'4%', paddingRight:'4%', font:' 17px Roboto',marginTop:'2%' }}>
+                        {note}          
+                        <div style={{float:'right', fontSize:'30', font:'Bold 19px Roboto', marginTop:'12%'}}>
+                            {sender}
+                        </div>
+                    </div>
+                </div>
+            </div>                
+        </Card>
 
         <div>
-        <Button onClick={prevPost} className={classes.button} style={{marginTop:'5%', marginLeft:'5%', float:'left'}}>
-              {'<<<'}
-          </Button>
-        <Button onClick={nextPost} className={classes.button} style={{marginTop:'5%', marginRight:'5%', float:'right'}}>
-              {'>>>'}
-          </Button>
-      </div>
+            <Button onClick={prevPost} className={classes.button} style={{marginTop:'5%', marginLeft:'5%', float:'left'}}>
+                {'<<<'}
+            </Button>
+            <Button onClick={nextPost} className={classes.button} style={{marginTop:'5%', marginRight:'5%', float:'right'}}>
+                {'>>>'}
+            </Button>
+        </div>
     </div>
   </div>
   );
 }
-
-export default Publicshare;
+export default Cardview;

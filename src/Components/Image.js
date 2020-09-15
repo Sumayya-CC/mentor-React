@@ -11,10 +11,11 @@ import imagee from '../Image/imagee.jpg';
 import imagef from '../Image/imagef.jpg';
 import imageg from '../Image/imageg.jpg';
 import imageh from '../Image/imageh.jpg';
-import { Typography } from '@material-ui/core';
-// import "fontsource-roboto";
+import { Typography, Button } from '@material-ui/core';
 import mail from '../Image/mail.png';
 import Upload from './Upload';
+import './Style.css';
+import logo from '../Image/tarentologo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   
   },
   header:{
-    marginTop:"10%",marginLeft:"11%",
+    marginTop:"8%",marginLeft:"11%",
   },
   title:{
     marginLeft:"11%",
@@ -53,25 +54,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *     cols: 2,
- *   },
- *
- *   {
- *     [etc...]
- *   },
- * ];
- */
 
 export default function ImageGridList(props) {
 
@@ -89,10 +71,12 @@ export default function ImageGridList(props) {
 
   return (
     <div>
+      
     <div className={classes.header}>
-
-           <img src={mail} className={classes.icon}/>
-           <span style={{display:"inline-block",marginLeft:"1%",font: " Bold 18px Roboto "}}> Share your memories with your colleagues</span> </div>
+    <img  src={logo} alt="Tarento" style={{width:'18%', marginTop:'-5%', marginBottom:'2%'}}/>
+    <br/>
+           <img src={mail} className={classes.icon} style={{marginBottom:'-0.7%'}}/>
+           <span style={{marginLeft:"1%",font: " Bold 18px Roboto "}}> Share your memories with your colleagues</span> </div>
       <Typography variant='body1' className={classes.title}> Choose a photo or upload your photo, write your message. Post!</Typography>
     <div className={classes.root}>
       <GridList cellHeight={150}className={classes.gridList} cols={4}>
@@ -102,7 +86,10 @@ export default function ImageGridList(props) {
           </GridListTile>
         ))}
         <GridListTile  className={classes.gridListTile} cols={1}>
+          <Button style={{backgroundColor: "#004040", color:"#FFFFFF",textTransform: 'none',height:'100%'}}
+          fullWidth='true'>
           <Upload/>
+          </Button>
         </GridListTile>
       </GridList>
     </div>
