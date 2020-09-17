@@ -126,7 +126,7 @@ function ShareScreen(props) {
       style={{marginTop:"5%", marginBottom:"2%",marginRight:'5%', minHeight:'300px', minWidth:'300px'}} >
         <CardActionArea style={{marginTop:'8%', marginLeft:'10%', marginBottom:'5%',marginRight:'10%',}}>
         <img  src={logo} alt="tarento" style={{width:'30%'}}/>
-              <Typography gutterBottom variant="h6" align='justify' style={{marginTop:'4%',marginRight:'20%',marginTop:'4%',font: " Bold 18px  Roboto"}} >
+              <Typography gutterBottom variant="h6" style={{marginTop:'4%',marginRight:'20%',marginTop:'4%',font: " Bold 18px  Roboto"}} >
                 {caption}
               </Typography>
           <img src={imageId} style={{marginTop:'4%',width:"80%"}} alt="No content!"/>
