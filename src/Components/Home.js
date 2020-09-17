@@ -98,11 +98,10 @@ export default function Home (props){
                           maxHeight: ITEM_HEIGHT * 4.5,
                           width: '20ch',},
                           }}>
-                      {options.map((option) => (
-                        <MenuItem key={option} selected={option === ''} onClick={onClicklogout}>
-                          {option}
-                        </MenuItem>
-                      ))}
+                        <MenuList style={{backgroundColor:"#FFFFFF"}}>
+                          <MenuItem onClick={allPost}>Post View</MenuItem>
+                          <MenuItem onClick={onClicklogout}>Logout</MenuItem>
+                        </MenuList>
                     </Menu>   
                     <Note image={image} email={email} name={name}/></div>
                 </div>

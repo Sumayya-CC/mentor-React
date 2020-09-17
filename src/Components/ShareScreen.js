@@ -149,11 +149,10 @@ const handleClose = () => {
                           maxHeight: ITEM_HEIGHT * 4.5,
                           width: '20ch',},
                           }}>
-                      {options.map((option) => (
-                        <MenuItem key={option} selected={option === ''} onClick={onClicklogout}>
-                          {option}
-                        </MenuItem>
-                      ))}
+                        <MenuList style={{backgroundColor:"#FFFFFF"}}>
+                            <MenuItem onClick={allPost}>Post View</MenuItem>
+                            <MenuItem onClick={onClicklogout}>Logout</MenuItem>
+                        </MenuList>
                     </Menu>   
                     <Button onClick={Home} className={classes.button} style={{marginTop:'2%', marginLeft:'2%', float:'left', width:'6%',}}>+</Button>
   
