@@ -35,11 +35,7 @@ export default class Upload extends Component {
         let file = files[0];
     let newFileName = files[0].name;
     const config = {
-      bucketName: "kronos-thankyou",
-      dirName: "directory" /* optional */,
-      region: "ap-south-1",
-      accessKeyId: "AKIAUAXLRTC3N3RDBJA2",
-      secretAccessKey: "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"
+     //s3 bucket details
     };
     const ReactS3Client = new S3(config);
     ReactS3Client.uploadFile(file, newFileName).then(data => {
