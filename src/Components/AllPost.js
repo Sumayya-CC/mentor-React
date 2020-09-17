@@ -59,7 +59,7 @@ export default function AllPost(props) {
 
   const handleClickPost =(tile)=>{
     console.log(tile);
-    browserHistory.push("/Tarento/Mentor-Wish/"+tile.SHARE_ID)
+    browserHistory.push("/Tarento/Inspire/"+tile.SHARE_ID)
 
   }
 

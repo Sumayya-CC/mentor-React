@@ -20,7 +20,9 @@
     "react-grid-gallery": "^0.5.5",
     "react-images-upload": "^1.2.8",
     "react-router": "^3.2.6",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
+    "semantic-ui-react": "^1.2.1",
     "sharethis-reactjs": "^1.6.0"
   },
   "scripts": {

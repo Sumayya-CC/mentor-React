@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 const UserProvider = (props) => {
 
- const [login, setLogin] = useState(false);
+ const [login, setLogin] = useState(true);
  const [name, setName] = useState('');
  const [email, setEmail] = useState('');
  

@@ -57,7 +57,7 @@ export default function Home (props){
             home= (
                 <div>
                   <div className="split1 left1"> 
-                    <Button name='sign-out'  className={classes.button} style={{float:'right',}} onClick = {allPost}>Post View</Button>
+                    <Button name='sign-out'  className={classes.button} style={{float:'right',}} onClick = {allPost}>All Post View</Button>
                     <ImageGridList onPassImage = {updateImage}/> </div>
                   <div className="split1 right1" style={{backgroundColor:'#007070'}}> 
                     <Button name='sign-out'  className={classes.button} style={{float:'right',}} onClick = {onClicklogout}>Log out </Button>   

@@ -75,6 +75,14 @@
     /* width: 600px; */
     }
 
+    /* p {
+      color: #000;
+      :hover {
+        color: #ed1212;
+        cursor: pointer;
+      }
+    } */
+
   /* .exit{
     float:right;
     background: #004040;

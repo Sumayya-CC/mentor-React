@@ -5,6 +5,9 @@ import './Style.css';
 import {InlineShareButtons} from 'sharethis-reactjs';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import * as API from '../constants/Api';
@@ -16,9 +19,9 @@ import { UserContext } from './Context';
 const useStyles = makeStyles({
     root: {
       width: '50%',
-      marginLeft:'25%',
-      marginTop:'1%',
-      height:"50%",
+    marginLeft:'25%',
+    marginTop:'1%',
+    minHeight:"65%"
     },
     button:{  
       //  align: 'center', 
@@ -94,7 +97,7 @@ function Share(props) {
   let share= null;
 
   if(!login){
-    browserHistory.push('http://localhost:3002/Tarento/Mentor-Wish/'+props.params.shareId);
+    browserHistory.push('http://localhost:3000/Tarento/Inspire/'+props.params.shareId);
     console.log('pls login');
   }else{
     share= (
@@ -102,33 +105,32 @@ function Share(props) {
       <Button onClick={Home} className={classes.button} style={{marginTop:'2%', marginLeft:'2%', float:'left', width:'6%'}}>Add post</Button> 
       <Button name='sign-out'  className={classes.button} style={{float:'right',marginTop:'2%', marginRight:'2%', width:'6%'}} onClick = {onClicklogout}>Log out </Button>
       <div className = 'split1 center2'>
-        <Card  style={{marginTop:"5%", marginBottom:"1%",marginRight:'1%', minHeight:'500px', minWidth:'500px'}} className={classes.root}>
-            <img src={logo} width="20%"  style={{marginLeft:'5%', marginTop:'4%'}}/>  
-            <div>
-                <div class="card-container">
-                    <div style={{marginLeft:'4%',}}>
-                        <img src={imageId} width="300" minHeight="300" style={{marginTop:'5%'}} />
-                        <h2 style={{color:"#004040",marginTop:'2%', float:'left', textAlign:'center', fontFamily:'Roboto'}}>
-                            {caption}</h2>
-                    </div>
-                    <div style={{textAlign:'justify',paddingLeft:'4%', paddingRight:'4%', font:' 17px Roboto',marginTop:'2%' }}>
-                        {note}          
-                        <div style={{float:'right', fontSize:'30', font:'Bold 19px Roboto', marginTop:'12%'}}>
-                            {sender}
-                        </div>
-                    </div>
-                </div>
-            </div>                
-        </Card>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <img src={imageId} style={{width:"100%"}} alt="No content!"/>
+            <CardContent>
+              <img  src={logo} alt="tarento" style={{marginTop:'1%',marginBottom:'4%', width:'40%'}}/>
+              <Typography gutterBottom variant="h6" style={{font: " Bold 20px  Roboto"}} >
+                {caption}
+              </Typography>
+              <Typography variant="body" color="textSecondary" component="p" align="justify" style={{font: " 16px  Roboto", paddingTop:'4%'}}>
+                {note}
+              </Typography>
+              <Typography variant="h6" style={{float:"right", paddingTop: "4%", font: " Italic 18px Roboto " }}>
+                - {sender}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card> 
 
         
     
 
       
         <div style={{marginLeft:'11%', paddingTop:'3%'}}>
-        <Button className={classes.button} onClick={deletePost}>Cancel</Button>
+        <Button className={classes.button} onClick={deletePost}>Delete</Button>
           <Button className={classes.button} onClick={() => exportComponentAsJPEG(cardIm)}>Download</Button>
-          <Button onClick={() =>  navigator.clipboard.writeText('http://localhost:3002/Tarento/Mentor-Wish/'+props.params.shareId)} className={classes.button}>Copy</Button> 
+          <Button onClick={() =>  navigator.clipboard.writeText('http://localhost:3000/Tarento/Inspire/'+props.params.shareId)} className={classes.button}>Copy</Button> 
           {/* {copySuccess} */}
         </div>
       

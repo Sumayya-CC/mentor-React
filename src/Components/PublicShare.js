@@ -14,16 +14,17 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   root: {
-    width: '50%',
-    marginLeft:'25%',
-    marginTop:'1%',
-    height:"85%"
+    width: '60%',
+    marginLeft:'20%',
+    marginTop:'10%',
+    minHeight:"65%"
    
   },
   button:{  
     //  align: 'center', 
   backgroundColor: "#004040", color:"#FFFFFF", 
-  width:'6%', height: '30%', 
+  width:'6%', 
+  height: '30%', 
   textTransform: 'none',
   marginTop:'0.5%',
   marginBottom:'0.5%',
@@ -71,34 +72,36 @@ function Publicshare(props) {
 
   return (
     <div>
-      <Button onClick={allPost} className={classes.button} style={{marginTop:'3%', marginLeft:'3%', float:'left'}}>Back</Button> 
+      <u onClick={allPost} style={{color:'#004040' ,marginTop:'3%', marginLeft:'3%', float:'left'}}>View All POst</u> 
       <div className = 'split1 center1'>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <img src={imageId} style={{width:"100%"}} alt="No content!"/>
-            <CardContent>
-              <img  src={logo} alt="tarento" style={{marginTop:'1%',marginBottom:'4%', width:'40%'}}/>
-              <Typography gutterBottom variant="h6" style={{font: " Bold 20px  Roboto"}} >
+      <div>
+        <Button onClick={prevPost} className={classes.button} style={{marginTop:'60%', marginLeft:'5%', float:'left', height:'20%'}}>
+              {'<'}
+          </Button>
+        <Button onClick={nextPost} className={classes.button} style={{marginTop:'60%', marginRight:'5%', float:'right'}}>
+              {'>'}
+          </Button>
+      </div>
+      <Card className={classes.root} style={{marginTop:"10%", marginBottom:"2%",marginRight:'2%', minHeight:'300px', minWidth:'300px'}}>
+        <CardActionArea style={{marginTop:'8%', marginLeft:'10%', marginBottom:'5%',marginRight:'10%',}}>
+        <img  src={logo} alt="tarento" style={{width:'35%'}}/>
+              <Typography gutterBottom variant="h6" align='justify' style={{marginTop:'4%',marginRight:'20%',font: " Bold 20px  Roboto"}} >
                 {caption}
               </Typography>
-              <Typography variant="body" color="textSecondary" component="p" align="justify" style={{font: " 16px  Roboto", paddingTop:'4%'}}>
+          <img src={imageId} style={{marginTop:'4%',width:"80%"}} alt="No content!"/>
+            <CardContent>
+              
+              <Typography variant="body"  component="p" align="justify" style={{ marginRight:'16%', marginLeft:'-5%', font: " 16px  Roboto",}}>
                 {note}
               </Typography>
-              <Typography variant="h6" style={{float:"right", paddingTop: "4%", font: " Italic 18px Roboto " }}>
+              <Typography variant="h6" style={{float:"right", font: " Italic 20px Roboto ", marginTop:'4%', marginBottom:'4%',marginRight:'16%', marginLeft:'-5%' }}>
                 - {sender}
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card> 
 
-        <div>
-        <Button onClick={prevPost} className={classes.button} style={{marginTop:'5%', marginLeft:'5%', float:'left'}}>
-              {'<<<'}
-          </Button>
-        <Button onClick={nextPost} className={classes.button} style={{marginTop:'5%', marginRight:'5%', float:'right'}}>
-              {'>>>'}
-          </Button>
-      </div>
+        
     </div>
   </div>
   );
