@@ -15,6 +15,11 @@ import  { useRef, useState } from 'react';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from "react-component-export-image";
 import {browserHistory} from 'react-router';
 import { UserContext } from './Context'; 
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 
 const useStyles = makeStyles({
     root: {
@@ -58,6 +63,23 @@ function ShareScreen(props) {
   const[imageId,setImageId]=useState();  
   const cardIm = useRef();
   const {login, setLogin, name, email} = useContext(UserContext);
+  const options = [
+    'Post View',
+    'Logout',
+  ];
+  
+  const ITEM_HEIGHT = 48;
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  
+const handleClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+
+const handleClose = () => {
+  setAnchorEl(null);
+};
 
   useEffect(() => {
     const fetchData=async()=>{
@@ -109,12 +131,33 @@ function ShareScreen(props) {
   }else{
     share= (
       <div>
-       
-      <Button onClick={allPost} className={classes.button} style={{marginTop:'2%', marginLeft:'2%', float:'left', width:'6%'}}>View All Post</Button> 
-      <Button name='sign-out'  className={classes.button} style={{float:'right',marginTop:'2%', marginRight:'2%', width:'6%'}} onClick = {onClicklogout}>Log out </Button>
+                    <IconButton style={{color:"#004040", float:'right', marginRight:'1%', marginTop:'1%'}}
+                      aria-label="more"
+                      aria-controls="long-menu"
+                      aria-haspopup="true"
+                      onClick={handleClick}>
+                      <MoreVertIcon />
+                    </IconButton>
+                    <Menu
+                      id="long-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={open}
+                      onClose={handleClose}
+                      PaperProps={{
+                        style: {
+                          maxHeight: ITEM_HEIGHT * 4.5,
+                          width: '20ch',},
+                          }}>
+                      {options.map((option) => (
+                        <MenuItem key={option} selected={option === ''} onClick={onClicklogout}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Menu>   
+                    <Button onClick={Home} className={classes.button} style={{marginTop:'2%', marginLeft:'2%', float:'left', width:'6%',}}>+</Button>
+  
       <div className = 'split1 center1'>
-          
-      
         <div style={{marginLeft:'11%', paddingTop:'3%'}}>
         <Button className={classes.button} onClick={deletePost}>Delete</Button>
           <Button className={classes.button} onClick={() => exportComponentAsJPEG(cardIm)}>Download</Button>
@@ -180,8 +223,7 @@ function ShareScreen(props) {
     
     
     </div>
-    <Button onClick={Home} className={classes.button} style={{marginTop:'2%', marginLeft:'2%', float:'left', width:'6%', float:'right'}}>Add post</Button>
-  </div>
+    </div>
     )
   }
 

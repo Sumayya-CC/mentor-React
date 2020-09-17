@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {DropzoneDialog} from 'material-ui-dropzone'
 import { Typography } from '@material-ui/core';
+import S3 from "react-aws-s3";
+
 
 
 
@@ -15,31 +17,6 @@ export default class Upload extends Component {
         files: []
     };
 }
-	 
-//	onFileChange = event => { 
-	
-	//this.setState({ selectedFile: event.target.files[0] }); 
-	
-	//}; 
-	
-
-	//onFileUpload = () => { 
-
-	//const formData = new FormData(); 
-	
-
-	//formData.append( 
-		//"myFile", 
-	//	this.state.selectedFile, 
-	//	this.state.selectedFile.name 
-	//); 
-	
-	//console.log(this.state.selectedFile); 
-	
-	// Request made to the backend api 
-	// Send formData object 
-	//axios.post("api/uploadfile", formData); 
-  //}; 
   handleClose() {
         this.setState({
             open: false
@@ -54,7 +31,26 @@ export default class Upload extends Component {
             open: false
             
         });
-        console.log(files);
+        console.log(files[0].name);
+        let file = files[0];
+    let newFileName = files[0].name;
+    const config = {
+      bucketName: "kronos-thankyou",
+      dirName: "directory" /* optional */,
+      region: "ap-south-1",
+      accessKeyId: "AKIAUAXLRTC3N3RDBJA2",
+      secretAccessKey: "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"
+    };
+    const ReactS3Client = new S3(config);
+    ReactS3Client.uploadFile(file, newFileName).then(data => {
+      console.log(data);
+      if (data.status === 204) {
+        console.log("success");
+      } else {
+        console.log("fail");
+      }
+    });
+
     }
     
 	

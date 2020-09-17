@@ -7,6 +7,10 @@ import './Style.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { UserContext } from './Context';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 const useStyles = makeStyles({
@@ -26,6 +30,23 @@ export default function Home (props){
     
     const {login, setLogin, name, email} = useContext(UserContext);
     const [image,setImage] = useState("/static/media/image.87dcdccf.jpg");
+    const options = [
+      'Post View',
+      'Logout',
+    ];
+    
+    const ITEM_HEIGHT = 48;
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
       const  updateImage = (tile) => {
            setImage(tile.img);
@@ -57,10 +78,32 @@ export default function Home (props){
             home= (
                 <div>
                   <div className="split1 left1"> 
-                    <Button name='sign-out'  className={classes.button} style={{float:'right',}} onClick = {allPost}>All Post View</Button>
                     <ImageGridList onPassImage = {updateImage}/> </div>
                   <div className="split1 right1" style={{backgroundColor:'#007070'}}> 
-                    <Button name='sign-out'  className={classes.button} style={{float:'right',}} onClick = {onClicklogout}>Log out </Button>   
+                    <IconButton style={{color:"#FFFFFF", float:'right', marginRight:'2%', marginTop:'2%'}}
+                      aria-label="more"
+                      aria-controls="long-menu"
+                      aria-haspopup="true"
+                      onClick={handleClick}>
+                      <MoreVertIcon />
+                    </IconButton>
+                    <Menu
+                      id="long-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={open}
+                      onClose={handleClose}
+                      PaperProps={{
+                        style: {
+                          maxHeight: ITEM_HEIGHT * 4.5,
+                          width: '20ch',},
+                          }}>
+                      {options.map((option) => (
+                        <MenuItem key={option} selected={option === ''} onClick={onClicklogout}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Menu>   
                     <Note image={image} email={email} name={name}/></div>
                 </div>
             )
