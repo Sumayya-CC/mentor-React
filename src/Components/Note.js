@@ -45,6 +45,19 @@ const useStyles = makeStyles((theme) => ({
             //  width:'25%',
               height: '6%', 
               textTransform: 'none', 
+              '&:hover': {
+                backgroundColor: '#004040',
+                borderColor: '#0062cc',
+                },
+                '&:active': {
+                boxShadow: 'none',
+                backgroundColor: '#004040',
+                borderColor: '#005cbf',
+                
+                },
+                '&:focus': {
+                boxShadow: '#004040',
+                },
               // float:'right'
             },
 }));

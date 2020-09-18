@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MenuList from '@material-ui/core/MenuList';
 
 
 const useStyles = makeStyles({
@@ -22,7 +23,20 @@ const useStyles = makeStyles({
       textTransform: 'none',
       marginTop:'4%',
       marginBottom:'0.5%',
-      marginRight:'4%'
+      marginRight:'4%',
+      '&:hover': {
+        backgroundColor: '#004040',
+        borderColor: '#0062cc',
+        },
+        '&:active': {
+        boxShadow: 'none',
+        backgroundColor: '#004040',
+        borderColor: '#005cbf',
+        
+        },
+        '&:focus': {
+        boxShadow: '#004040',
+        },
      },
     });
 

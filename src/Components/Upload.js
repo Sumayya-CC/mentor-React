@@ -36,6 +36,7 @@ export default class Upload extends Component {
     let newFileName = files[0].name;
     const config = {
      //s3 bucket details
+     
     };
     const ReactS3Client = new S3(config);
     ReactS3Client.uploadFile(file, newFileName).then(data => {

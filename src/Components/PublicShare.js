@@ -28,7 +28,20 @@ const useStyles = makeStyles({
   textTransform: 'none',
   marginTop:'0.5%',
   marginBottom:'0.5%',
-  marginLeft:'2%'
+  marginLeft:'2%',
+  '&:hover': {
+    backgroundColor: '#004040',
+    borderColor: '#0062cc',
+    },
+    '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#004040',
+    borderColor: '#005cbf',
+    
+    },
+    '&:focus': {
+    boxShadow: '#004040',
+    },
    },
 },
 );
@@ -94,7 +107,7 @@ function Publicshare(props) {
               <Typography variant="body"  component="p" align="justify" style={{ marginRight:'16%', marginLeft:'-5%', font: " 16px  Roboto",}}>
                 {note}
               </Typography>
-              <Typography variant="h6" style={{float:"right", font: " Italic 20px Roboto ", marginTop:'4%', marginBottom:'4%',marginRight:'16%', marginLeft:'-5%' }}>
+              <Typography variant="h6" style={{float:"right", font: " Italic Bold 20px Roboto ", marginTop:'4%', marginBottom:'4%',marginRight:'16%', marginLeft:'-5%' }}>
                 - {sender}
               </Typography>
             </CardContent>
