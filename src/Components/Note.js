@@ -36,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
             },
             '&& .MuiInput-root:hover::before': {
             borderColor: 'white',
-            } 
+            },
+            '&& .MuiInputLabel-root':{
+              paddingLeft: '2%'
+            }, 
             },
 
             button:{align: 'center',
@@ -106,7 +109,7 @@ function Note(props) {
      
   
     return (
-      <div style={{paddingTop:'5%'}} className = "Align-text" >
+      <div style={{paddingTop:'2%'}} className = "Align-text" >
         <div className="note">
           <form onSubmit={handleSubmit} >
             <TextField 
@@ -121,7 +124,7 @@ function Note(props) {
 
             <TextField style = {{height: '150px',}}
               id="Message"
-              label=" Write your message (Max 300 letters)"
+              label=" Write your message (Max 300 characters)"
               name="Text"
               required
               align='justify'

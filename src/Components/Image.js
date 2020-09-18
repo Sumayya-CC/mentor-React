@@ -80,17 +80,18 @@ export default function ImageGridList(props) {
       <Typography variant='body1' className={classes.title}> Choose a photo or upload your photo, write your message. Post!</Typography>
     <div className={classes.root}>
       <GridList cellHeight={150}className={classes.gridList} cols={4}>
+      <GridListTile  className={classes.gridListTile} cols={1}>
+          <Button style={{backgroundColor: "#004040", color:"#FFFFFF",textTransform: 'none',height:'100%'}}
+          fullWidth='true'>
+          <Upload onUploadImage={props.onUploadImage}/>
+          </Button>
+        </GridListTile>
         {tileData.map((tile) => (
           <GridListTile  className={classes.gridListTile} cols={1}>
             <img src={tile.img} onClick={() =>onImageClick(tile)}  />
           </GridListTile>
         ))}
-        <GridListTile  className={classes.gridListTile} cols={1}>
-          <Button style={{backgroundColor: "#004040", color:"#FFFFFF",textTransform: 'none',height:'100%'}}
-          fullWidth='true'>
-          <Upload/>
-          </Button>
-        </GridListTile>
+        
       </GridList>
     </div>
     </div>

@@ -20,6 +20,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MenuList from '@material-ui/core/MenuList';
+import ShareIcon from '@material-ui/icons/Share';
+import DeleteIcon from '@material-ui/icons/Delete';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles({
     root: {
@@ -76,10 +79,7 @@ function ShareScreen(props) {
   const[imageId,setImageId]=useState();  
   const cardIm = useRef();
   const {login, setLogin, name, email} = useContext(UserContext);
-  const options = [
-    'Post View',
-    'Logout',
-  ];
+  
   
   const ITEM_HEIGHT = 48;
 
@@ -163,25 +163,22 @@ const handleClose = () => {
                           width: '20ch',},
                           }}>
                         <MenuList style={{backgroundColor:"#FFFFFF"}}>
-                            <MenuItem onClick={allPost}>Post View</MenuItem>
+                            <MenuItem onClick={allPost}>View All Post</MenuItem>
                             <MenuItem onClick={onClicklogout}>Logout</MenuItem>
                         </MenuList>
                     </Menu>   
                     <Button onClick={Home} className={classes.button} style={{marginTop:'2%', marginLeft:'2%', float:'left', width:'6%',}}>+</Button>
   
       <div className = 'split1 center1'>
-        <div style={{marginLeft:'11%', paddingTop:'3%'}}>
-        <Button className={classes.button} onClick={deletePost}>Delete</Button>
-          <Button className={classes.button} onClick={() => exportComponentAsJPEG(cardIm)}>Download</Button>
-          <Button onClick={() =>  navigator.clipboard.writeText('http://localhost:3000/Tarento/Inspire/'+props.params.shareId)} className={classes.button}>Copy</Button> 
-          {/* {copySuccess} */}
-        </div>
+        <DeleteIcon color="action" fontSize="large" style={{marginLeft:"15%",color:"white"}} onClick={deletePost}/>
+        <GetAppIcon color="action" fontSize="large"  style={{marginLeft:"23%",color:"white"}} onClick={() => exportComponentAsJPEG(cardIm)} />
+        <ShareIcon color="action" fontSize="large" style={{marginLeft:"23%",color:"white"}} onClick={() =>  navigator.clipboard.writeText('http://localhost:3000/Tarento/Mentor-Wish/'+props.params.shareId)}/>
       
       <Card className={classes.root} ref={cardIm}
       style={{marginTop:"5%", marginBottom:"2%",marginRight:'5%', minHeight:'300px', minWidth:'300px'}} >
         <CardActionArea style={{marginTop:'8%', marginLeft:'10%', marginBottom:'5%',marginRight:'10%',}}>
         <img  src={logo} alt="tarento" style={{width:'30%'}}/>
-              <Typography gutterBottom variant="h6" style={{marginTop:'4%',marginRight:'20%',marginTop:'4%',font: " Bold 18px  Roboto"}} >
+              <Typography gutterBottom variant="h6" style={{marginTop:'4%',marginRight:'20%',font: " Bold 18px  Roboto"}} >
                 {caption}
               </Typography>
           <img src={imageId} style={{marginTop:'4%',width:"80%"}} alt="No content!"/>
@@ -190,7 +187,7 @@ const handleClose = () => {
               <Typography variant="body"  component="p" align="justify" style={{ marginRight:'16%', marginLeft:'-5%', font: " 14px  Roboto",}}>
                 {note}
               </Typography>
-              <Typography variant="h6" style={{float:"right", font: " Italic Bold 16px Roboto ", marginTop:'4%', marginBottom:'4%',marginRight:'16%', marginLeft:'-5%' }}>
+              <Typography variant="h6" style={{float:"right", font: " Italic 16px Roboto ", marginTop:'4%', marginBottom:'4%',marginRight:'16%', marginLeft:'-5%' }}>
                 - {sender}
               </Typography>
             </CardContent>
@@ -201,7 +198,7 @@ const handleClose = () => {
     
 
 
-    <div style={{paddingTop:'1.5%'}}></div>
+    <div style={{paddingTop:'3%'}}></div>
     <InlineShareButtons
       config={{
         alignment: 'center',  // alignment of buttons (left, center, right)

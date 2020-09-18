@@ -85,7 +85,8 @@ function Publicshare(props) {
 
   return (
     <div>
-      <u onClick={allPost} style={{color:'#004040' ,marginTop:'3%', marginLeft:'3%', float:'left'}}>View All POst</u> 
+      <u onClick={allPost} style={{color:'#004040' ,marginTop:'3%', marginLeft:'3%', float:'left'}}>View All Post</u> 
+      <img src={imageId} alt='img' style={{width:'80%', opacity:'0.8'}}/>
       <div className = 'split1 center1'>
       <div>
         <Button onClick={prevPost} className={classes.button} style={{marginTop:'60%', marginLeft:'5%', float:'left', height:'20%'}}>

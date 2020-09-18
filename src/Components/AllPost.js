@@ -1,4 +1,4 @@
-import React,{useState, useContext}  from 'react';
+import React,{useState, useContext, useEffect}  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AllPost(props) {
   const classes = useStyles();
-  const [tileData, setTileData] = React.useState([]);
+  const [tileData, setTileData] = useState([]);
   const {login, name, email} = useContext(UserContext);
   
   const loginClick = () =>{
@@ -64,19 +64,13 @@ export default function AllPost(props) {
   }
 
 
-  React.useEffect(() => {
-    
-    
+  useEffect(() => {
     const fetchData=async()=>{
     const response = await axios.get(API.ALL_POST);
     console.log(response)
     const data= response.data;
     setTileData(data.reverse());
     console.log(tileData);
-    
-  
-
-  
   };
   fetchData();});
 
@@ -95,7 +89,7 @@ export default function AllPost(props) {
   }
     button=(
     <Button style={{float:'right' , marginRight:'3%',}} className={classes.button} onClick={addPost}>
-      Add Post</Button>
+     +</Button>
     )
   }
 
@@ -111,7 +105,7 @@ export default function AllPost(props) {
           </ListSubheader>
           
         </GridListTile>
-        {tileData.map((tile) => (
+        {tileData.slice(2, ).map((tile) => (
           <GridListTile style={{minWidth:'300px',width:'25%',paddingTop:"3%",paddingRight:"3%",minHeight: '300px', flexDirection:'row-reverse' }} key={tile.img}>
             <img src={tile.IMAGE_ID} alt={'Thank you Tarento!'} onClick={()=>handleClickPost(tile)} />
             <GridListTileBar

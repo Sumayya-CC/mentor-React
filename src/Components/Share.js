@@ -30,7 +30,20 @@ const useStyles = makeStyles({
       textTransform: 'none',
       marginTop:'0.5%',
       marginBottom:'0.5%',
-      marginLeft:'2%'
+      marginLeft:'2%',
+      '&:hover': {
+        backgroundColor: '#004040',
+        borderColor: '#0062cc',
+        },
+        '&:active': {
+        boxShadow: 'none',
+        backgroundColor: '#004040',
+        borderColor: '#005cbf',
+        
+        },
+        '&:focus': {
+        boxShadow: '#004040',
+        },
      },
      textField: {
       width: '60%',

@@ -44,10 +44,7 @@ export default function Home (props){
     
     const {login, setLogin, name, email} = useContext(UserContext);
     const [image,setImage] = useState("/static/media/image.87dcdccf.jpg");
-    const options = [
-      'Post View',
-      'Logout',
-    ];
+    
     
     const ITEM_HEIGHT = 48;
 
@@ -66,7 +63,12 @@ export default function Home (props){
            setImage(tile.img);
         }
 
-        const classes = useStyles();
+      const onUploadImage = (uploadedImage) => {
+        setImage(uploadedImage);
+        console.log(uploadedImage);
+      }
+
+        // const classes = useStyles();
 
       const  onClicklogout = () => {
             browserHistory.push("/PublicView");
@@ -92,7 +94,7 @@ export default function Home (props){
             home= (
                 <div>
                   <div className="split1 left1"> 
-                    <ImageGridList onPassImage = {updateImage}/> </div>
+                    <ImageGridList onPassImage = {updateImage} onUploadImage= {onUploadImage}/> </div>
                   <div className="split1 right1" style={{backgroundColor:'#007070'}}> 
                     <IconButton style={{color:"#FFFFFF", float:'right', marginRight:'2%', marginTop:'2%'}}
                       aria-label="more"
@@ -113,7 +115,7 @@ export default function Home (props){
                           width: '20ch',},
                           }}>
                         <MenuList style={{backgroundColor:"#FFFFFF"}}>
-                          <MenuItem onClick={allPost}>Post View</MenuItem>
+                          <MenuItem onClick={allPost}>View All Post</MenuItem>
                           <MenuItem onClick={onClicklogout}>Logout</MenuItem>
                         </MenuList>
                     </Menu>   

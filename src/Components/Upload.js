@@ -12,7 +12,7 @@ export default class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFile: null,
+      selectedImage: '',
         open: false,
         files: []
     };
@@ -43,6 +43,9 @@ export default class Upload extends Component {
       console.log(data);
       if (data.status === 204) {
         console.log("success");
+        this.setState({selectedImage:data.location});
+        console.log(this.state.selectedImage);
+        this.props.onUploadImage(this.state.selectedImage);
       } else {
         console.log("fail");
       }
