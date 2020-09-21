@@ -9,6 +9,7 @@ import { UserProvider } from './Components/Context';
 import Cardview from './Components/CardView';
 import Publicshare from './Components/PublicShare';
 import ShareScreen from './Components/ShareScreen';
+import PublicLogin from './Components/PublicLogin';
 
 class App extends Component{
   render(){
@@ -24,6 +25,7 @@ class App extends Component{
         <Route exact path={"/Home/:email/:name"} component={Home} />
         <Route exact path={"/Share/:shareId"} component={ShareScreen} />
         <Route exact path={"/Tarento/Inspire/:shareId"} component={Publicshare} />
+        <Route exact path="/PublicLogin" component={PublicLogin} />
         {/* <Route exact path={"/Tarento/Inspire/:shareId"} component={Cardview} /> */}
         
         </Route>

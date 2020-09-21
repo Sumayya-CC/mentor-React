@@ -29,7 +29,20 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'none',
     // marginTop:'2%',
     // marginBottom:'0.5%',
-    // marginRight:'2%'
+    // marginRight:'2%',
+    '&:hover': {
+      backgroundColor: '#004040',
+      borderColor: '#0062cc',
+      },
+      '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#004040',
+      borderColor: '#005cbf',
+      
+      },
+      '&:focus': {
+      boxShadow: '#004040',
+      },
    },
   gridList: {
     paddingTop:"1%",
@@ -105,7 +118,7 @@ export default function AllPost(props) {
           </ListSubheader>
           
         </GridListTile>
-        {tileData.slice(2, ).map((tile) => (
+        {tileData.map((tile) => (
           <GridListTile style={{minWidth:'300px',width:'25%',paddingTop:"3%",paddingRight:"3%",minHeight: '300px', flexDirection:'row-reverse' }} key={tile.img}>
             <img src={tile.IMAGE_ID} alt={'Thank you Tarento!'} onClick={()=>handleClickPost(tile)} />
             <GridListTileBar

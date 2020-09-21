@@ -95,6 +95,7 @@ export default function Home (props){
                 <div>
                   <div className="split1 left1"> 
                     <ImageGridList onPassImage = {updateImage} onUploadImage= {onUploadImage}/> </div>
+                    
                   <div className="split1 right1" style={{backgroundColor:'#007070'}}> 
                     <IconButton style={{color:"#FFFFFF", float:'right', marginRight:'2%', marginTop:'2%'}}
                       aria-label="more"
